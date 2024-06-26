@@ -1,27 +1,39 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useContext } from "react";
+import CartContext from "../../context/CartContext";
+import { useDispatch, useSelector } from 'react-redux';
+
 function ReduxAddToCart({ product }) {
-    console.log("add to cart", product.id);
-    // useSelector
-    let dispatch = useDispatch();
+    const dispatch = useDispatch();
+    // const { cart, increaseQuantity, decreaseQuantity } = useContext(CartContext);
+    let quantity = useSelector((state) =>{
+        return state.items[product.id]? state.items[product.id].quantity: 0;
+    });
+
+  
+
+    // if (!product || !product.id) {
+    //     console.error("Product is undefined or does not have an id property", product);
+    //     return null; // or render some fallback UI
+    // }
+
     function increase() {
-        //dispatch({type: , payload: })
-        dispatch({ type: "ADD_TO_CART", payload: product });
-    }
-    function decrease() {
-     //dispatch({type: , payload: })
-     dispatch({ type: "REMOVE_FROM_CART", payload: product });
+        //dispatch({type:, payload})
+        dispatch({type: "ADD_TO_CART", payload: product})
     }
 
-    let quantity = useSelector((state) => {
-        return state.items[product.id]?.quantity || 0;
-    })
+    function decrease() {
+        //dispatch({type:, payload})
+        dispatch({type: "REMOVE_FROM_CART", payload: product})
+    }
+
+    
 
     if (quantity === 0) {
         return (
             <div>
-                <button onClick={increase}>AddToCart</button>
+            <button onClick={increase}>AddToCart</button>
             </div>
-     )  
+        )  
     } else {
         return ( 
             <div>
@@ -32,6 +44,7 @@ function ReduxAddToCart({ product }) {
         )
     }
 }
+
 export default ReduxAddToCart;
 
 

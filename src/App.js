@@ -1,8 +1,9 @@
-import './App.css';
-import { a, b } from './components/Products/Products';
-import Products from './components/Products/Products';
-import { useState } from 'react';
-import CartContext from './context/CartContext';
+import "./App.css";
+import { a, b } from "./components/Products/Products";
+import Products from "./components/Products/Products";
+import { useState } from "react";
+import CartContext from "./context/CartContext";
+import DisplayCart from "./components/ReduxAddToCart/DisplayCart";
 function App() {
   // state variable
   // inc
@@ -14,7 +15,7 @@ function App() {
     if (!newCart[product.id]) {
       newCart[product.id] = {
         ...product,
-        quantity: 0
+        quantity: 0,
       };
     }
     newCart[product.id].quantity += 1;
@@ -34,9 +35,10 @@ function App() {
 
   console.log(a, b);
   return (
-    <CartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity}}>
+    <CartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity }}>
       <div className="App">
-        <Products  />
+        <Products />
+        <DisplayCart />
       </div>
     </CartContext.Provider>
   );
@@ -58,17 +60,15 @@ export default App;
 
 // {cart: cart, increaseQuantity: increaseQuantity}
 
-
 // Global Parent
 // Global state
 // way to manipulate the state
 // way to consume the state
 
-
 //  Provider
 //  Store
-    // State
-    // Reducer
+// State
+// Reducer
 // Action
 // Dispatcher
 // Selectors
