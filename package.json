@@ -1,5 +1,5 @@
 {
-  "name": "sst-classes",
+  "name": "react-pratical",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,7 +12,8 @@
     "react-scripts": "5.0.1",
     "redux": "4.2.1",
     "web-vitals": "^2.1.4",
-    "lodash": "4.17.21"
+    "lodash": "4.17.21",
+    "redux-thunk": "2.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
